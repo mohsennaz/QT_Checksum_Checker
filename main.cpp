@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     list.append(66);
 
 
-    qDebug() << "The Result of "<< list << " with lenght " << list.size() << " is " <<  qChecksum((char*) list,list.size()) ;
+    //qDebug() << "The Result of "<< list << " with lenght " << list.size() << " is " <<  qChecksum((char*) list,list.size()) ;
 
 
     return a.exec();
