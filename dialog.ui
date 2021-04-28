@@ -29,7 +29,7 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QLineEdit" name="lineditInput"/>
+      <widget class="QLineEdit" name="linedit_Input"/>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_2">
@@ -104,14 +104,14 @@
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QRadioButton" name="radioButton_2">
+         <widget class="QRadioButton" name="radioButton_Decimal">
           <property name="text">
            <string>Decimal</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QRadioButton" name="radioButton">
+         <widget class="QRadioButton" name="radioButton_Hex">
           <property name="text">
            <string>Hex</string>
           </property>
@@ -138,7 +138,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="btnCalculate">
        <property name="text">
         <string>Calculate</string>
        </property>
