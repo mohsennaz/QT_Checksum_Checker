@@ -73,12 +73,12 @@
        </property>
        <item>
         <property name="text">
-         <string>CRC16- modbus</string>
+         <string>CRC16 modbus</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>CRC16 - CAN BUS</string>
+         <string>CRC16 CAN BUS</string>
         </property>
        </item>
        <item>

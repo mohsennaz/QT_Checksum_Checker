@@ -43,41 +43,50 @@ void Dialog::on_btnCalculate_clicked()
         QMessageBox::warning(this,"Value is not valid", "Please Enter a Value");
         return;
     }
-
     QString typeInput = getRadioButton(ui->groupBox);
-    if(typeInput == "Hex")
+
+    QString Type = ui->comboBox->currentText();
+    qDebug() << "The type of calculation is = " << Type;
+    if(Type == "CRC16 modbus")
     {
-        bool ok;
-        qDebug() << "The Input Value is = " << input.toInt(&ok,16);
-        QStringList inputvalue = input.split(' ');
-        ui->lineedit_Result->setText(input);
-        qDebug() << "The lenght of text is = " << lenght << "byets";
-        foreach(QString v, inputvalue)
+
+        if(typeInput == "Hex")
         {
-            if(v == "")
+            bool ok;
+            qDebug() << "The Input Value is = " << input.toInt(&ok,16);
+            QStringList inputvalue = input.split(' ');
+            ui->lineedit_Result->setText(input);
+            qDebug() << "The lenght of text is = " << lenght << "byets";
+            foreach(QString v, inputvalue)
             {
-                break;
+                if(v == "")
+                {
+                    break;
+                }
+                else
+                {
+                    bool ok;
+                 qDebug() << v.toInt(&ok,16);
+                }
+
             }
-            else
-            {
-                bool ok;
-             qDebug() << v.toInt(&ok,16);
-            }
+
+
+            quint16 crc = checksum::CRC16Modbus(inputvalue, lenght);
+
+            ui->lineedit_Result->setText(QString::number( crc, 16 ).toUpper());
+
+        }
+        else if (typeInput == "Decimal")
+        {
 
         }
 
-
-        quint16 crc = checksum::CRC16Modbus(inputvalue, lenght);
-
-        ui->lineedit_Result->setText(QString::number( crc, 16 ).toUpper());
-
     }
-    else if (typeInput == "Decimal")
+    else if(Type == "CRC16 CAN BUS")
     {
 
     }
-
-
 
 }
 
@@ -90,6 +99,7 @@ void Dialog::on_btnClear_clicked()
 QString Dialog::getRadioButton(QObject *obj)
 {
     QString textRadioButton = "None";
+    /* find which value of radioButton */
     QList<QRadioButton*> list = obj->findChildren<QRadioButton*>(QString(), Qt::FindDirectChildrenOnly);
 
     foreach(QRadioButton* rdo, list)
