@@ -1,5 +1,7 @@
 #include "dialog.h"
 #include "ui_dialog.h"
+#include "checksum.h"
+#include <QMessageBox>
 
 
 
@@ -31,11 +33,17 @@ Dialog::~Dialog()
 
 void Dialog::on_btnCalculate_clicked()
 {
-    /*qDebug() << "The calculatation clicked";
-    ui->lineedit_Result->setText("Test");*/
+    qDebug() << "The calculatation clicked";
 
     /* get input value entered by user */
     QString input = ui->linedit_Input->text();
+    int lenght = ((ui->linedit_Input->text().length() + 1 - 35) / 2 );
+    if(lenght == 0)
+    {
+        QMessageBox::warning(this,"Value is not valid", "Please Enter a Value");
+        return;
+    }
+
     QString typeInput = getRadioButton(ui->groupBox);
     if(typeInput == "Hex")
     {
@@ -43,7 +51,6 @@ void Dialog::on_btnCalculate_clicked()
         qDebug() << "The Input Value is = " << input.toInt(&ok,16);
         QStringList inputvalue = input.split(' ');
         ui->lineedit_Result->setText(input);
-        int lenght = ((ui->linedit_Input->text().length() + 1 - 35) / 2 );
         qDebug() << "The lenght of text is = " << lenght << "byets";
         foreach(QString v, inputvalue)
         {
@@ -60,6 +67,9 @@ void Dialog::on_btnCalculate_clicked()
         }
 
 
+        quint16 crc = checksum::CRC16Modbus(inputvalue, lenght);
+
+        ui->lineedit_Result->setText(QString::number( crc, 16 ).toUpper());
 
     }
     else if (typeInput == "Decimal")
