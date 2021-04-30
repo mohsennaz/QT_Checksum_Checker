@@ -25,10 +25,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        checksum.cpp \
         main.cpp \
         dialog.cpp
 
 HEADERS += \
+        checksum.h \
         dialog.h
 
 FORMS += \

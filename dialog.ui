@@ -29,7 +29,11 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QLineEdit" name="linedit_Input"/>
+      <widget class="QLineEdit" name="linedit_Input">
+       <property name="inputMask">
+        <string/>
+       </property>
+      </widget>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_2">
@@ -44,7 +48,7 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QLineEdit" name="lineEdit_Result"/>
+      <widget class="QLineEdit" name="lineedit_Result"/>
      </item>
     </layout>
    </item>
@@ -69,12 +73,12 @@
        </property>
        <item>
         <property name="text">
-         <string>CRC16- modbus</string>
+         <string>CRC16 modbus</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>CRC16 - CAN BUS</string>
+         <string>CRC16 CAN BUS</string>
         </property>
        </item>
        <item>
@@ -124,6 +128,13 @@
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="btnClear">
+       <property name="text">
+        <string>Clear</string>
+       </property>
+      </widget>
+     </item>
      <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
